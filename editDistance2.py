@@ -1,12 +1,16 @@
 import cython
-
+@cython.cfunc
 def editDistDP(str1, str2):
-    m = len(str1)
-    n = len(str2)
+    m: cython.int = len(str1)
+    n: cython.int = len(str2)
     # Create a table to store results of subproblems
-    dp = [[0 for x in range(n + 1)] for x in range(m + 1)]
+    dp : list = []
+    for x in range(m + 1):
+        dp.append([0 for x in range(n + 1)])
  
     # Fill d[][] in bottom up manner
+    i: cython.int
+    j: cython.int
     for i in range(m + 1):
         for j in range(n + 1):
  
